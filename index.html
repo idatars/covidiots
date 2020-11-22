@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Welcome to Covidiots! v1.0</h1>
+    <div class="grid">
+        <div id="terminal">
+            <form id="playerinfo" onsubmit="return playersetup()">
+                <p>Welcome to Covidiots!</p>
+                <p>Please enter the names of the players.</p>
+                <label for="p1">Player 1:</label>
+                <input type="text" name="p1" id="p1">
+                <br>
+                <label for="p2">Player 2:</label>
+                <input type="text" name="p2" id="p2">
+                <br>
+                <label for="p3">Player 3:</label>
+                <input type="text" name="p3" id="p3">
+                <br>
+                <label for="p4">Player 4:</label>
+                <input type="text" name="p4" id="p4">
+                <br>
+                <label for="p5">Player 5:</label>
+                <input type="text" name="p5" id="p5">
+                <br>
+                <label for="p6">Player 6:</label>
+                <input type="text" name="p6" id="p6">
+                <br>
+                <label for="p7">Player 7:</label>
+                <input type="text" name="p7" id="p7">
+                <br>
+                <label for="p8">Player 8:</label>
+                <input type="text" name="p8" id="p8">
+                <br>
+                <label for="p9">Player 9:</label>
+                <input type="text" name="p9" id="p9">
+                <br>
+                <input type="submit" name="SUBMIT">
+            </form>
+            <form id="roleselection" style="display:none" onsubmit="return rolesetup()">
+                <input type="number" name="covidiot" id="covidiot" min="1" max="playernum()" value="1">
+                <label for="covidiot">Covidiot</label>
+                <br>
+                <input type="number" name="doctor" id="doctor" min="1" value="1">
+                <label for="doctor">Doctor</label>
+                <br>
+                <input type="number" name="detective" id="detective" min="0" value="0">
+                <label for="detective">Detective</label>
+                <br>
+                <input type="number" name="tester" id="tester" min="0" value="0">
+                <label for="tester">Tester</label>
+                <br>
+                <input type="number" name="telemarketer" id="telemarketer" max="1" min="0" value="0">
+                <label for="telemarketer">Telemarketer</label>
+                <br>
+                <input type="number" name="judge" id="judge" min="0" max="1" value="0">
+                <label for="judge">Judge</label>
+                <br>
+                <input type="number" name="newscaster" id="newscaster" min="0" max="1" value="0">
+                <label for="newscaster">Newscaster</label>
+                <br>
+                <input type="number" name="paranoid" id="paranoid" min="0" value="0">
+                <label for="paranoid">Paranoid</label>
+                <br>
+                <input type="submit" name="SUBMIT">
+            </form>
+            <div id="day" style="display:none">
+                <h2 id="dayheading">Day X</h2>
+                <div id="summary" style="display:none">
+                    <h3>Deaths to report:</h3>
+                    <ul id="deaths">
+                    </ul>
+                    <h3>Results to send:</h3>
+                    <table id="results">
+                        <tr>
+                            <th>Recipient</th>
+                            <th>Message</th>
+                        </tr>
+                    </table>
+                    <button onclick="return cont()">Continue</button>
+                </div>
+                <div id="quarantineinfo" style="display:none">
+                     <div id="quarantinediv1">
+                        <label for="quarantine1">Player 1</label>
+                        <button id="quarantine1" onclick="return quarantine(1)">Quarantine</button>
+                        <br>
+                    </div>
+                    <div id="quarantinediv2">
+                        <label for="quarantine2">Player 2</label>
+                        <button id="quarantine2" onclick="return quarantine(2)">Quarantine</button>
+                        <br>
+                    </div>
+                    <div id="quarantinediv3">
+                        <label for="quarantine3">Player 3</label>
+                        <button id="quarantine3" onclick="return quarantine(3)">Quarantine</button>
+                        <br>
+                    </div>
+                    <div id="quarantinediv4">
+                        <label for="quarantine4">Player 4</label>
+                        <button id="quarantine4" onclick="return quarantine(4)">Quarantine</button>
+                        <br>
+                    </div>
+                    <div id="quarantinediv5">
+                        <label for="quarantine5">Player 5</label>
+                        <button id="quarantine5" onclick="return quarantine(5)">Quarantine</button>
+                        <br>
+                    </div>
+                    <div id="quarantinediv6">
+                        <label for="quarantine6">Player 6</label>
+                        <button id="quarantine6" onclick="return quarantine(6)">Quarantine</button>
+                        <br>
+                    </div>
+                    <div id="quarantinediv7">
+                        <label for="quarantine7">Player 7</label>
+                        <button id="quarantine7" onclick="return quarantine(7)">Quarantine</button>
+                        <br>
+                    </div>
+                    <div id="quarantinediv8">
+                        <label for="quarantine8">Player 8</label>
+                        <button id="quarantine8" onclick="return quarantine(8)">Quarantine</button>
+                        <br>
+                    </div>
+                    <div id="quarantinediv9">
+                        <label for="quarantine9">Player 9</label>
+                        <button id="quarantine9" onclick="return quarantine(9)">Quarantine</button>
+                        <br>
+                    </div>
+                    <button onclick="return endday()">End day</button>
+                </div>
+            </div>
+            <div id="night" style="display:none">
+                <h2 id="nightheading">Night X</h2>
+                <p>Enter the players targets...</p>
+                <form id="targetinput" onsubmit="return endnight()">
+                    <div>
+                        <label for="target1">Player 1:</label>
+                        <input type="text" name="target1" id="target1">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="target2">Player 2:</label>
+                        <input type="text" name="target2" id="target2">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="target3">Player 3:</label>
+                        <input type="text" name="target3" id="target3">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="target4">Player 4:</label>
+                        <input type="text" name="target4" id="target4">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="target5">Player 5:</label>
+                        <input type="text" name="target5" id="target5">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="target6">Player 6:</label>
+                        <input type="text" name="target6" id="target6">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="target7">Player 7:</label>
+                        <input type="text" name="target7" id="target7">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="target8">Player 8:</label>
+                        <input type="text" name="target8" id="target8">
+                        <br>
+                    </div>
+                    <div>
+                        <label for="target9">Player 9:</label>
+                        <input type="text" name="target9" id="target9">
+                        <br>
+                    </div>
+                    <input type="submit" name="SUBMIT">
+                </form>
+            </div>
+        </div>
+        <div id="data" style="display:none">
+            <table id="datatable">
+                <tr id="headings">
+                    <th></th>
+                    <th></th>
+                    <th>Role</th>
+                    <th>Dead</th>
+                    <th>Turns Infected</th>
+                    <th>Immune</th>
+                    <th>Quarantined</th>
+                </tr>
+                <tr id="player1">
+                    <th>Player 1</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="player2">
+                    <th>Player 2</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="player3">
+                    <th>Player 3</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="player4">
+                    <th>Player 4</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="player5">
+                    <th>Player 5</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="player6">
+                    <th>Player 6</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="player7">
+                    <th>Player 7</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="player8">
+                    <th>Player 8</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr id="player9">
+                    <th>Player 9</th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+        <div id="debug" style="display:none">
+            <h3>Debug</h3>
+            
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    var playernames = [];
+    var playernum = 0;
+    var rolelist = [];
+    var playerlist = [];
+    var rolesearchresults = [];
+    var deaths = [];
+    var investresults = [];
+    var TURNS_INFECTED = 1;
+    var GRACE_PERIOD = 1;
+    var cycle = 1;
+
+    function Player(n, str, role) {
+        this.id = n;
+        this.name = str;
+        this.role = role;
+        this.dead = false;
+        this.turnsinfected = 0;
+        if (role == "covidiot") {
+            this.infected = true;
+        } else {
+            this.infected = false;
+        }
+        this.immune = false;
+        this.quarantine = false;
+        this.roleblocked = false;
+        this.targetlist = [];
+    }
+
+    function Result(invest, msg) {
+        this.investigator = invest;
+        this.message = msg;
+    }
+    
+    // returns "Player X (name)" for the given player
+    // requires: player is valid
+    function displayname(player) {
+        return "Player " + player.id + " (" + player.name + ")"
+    }
+    
+    // sets dead to true, infected to false, and turnsinfected to 0
+    // requires: player is valid
+    // effects: pushes display name to list of deaths
+    function kill(player) {
+        player.dead = true;
+        //console.log("killing " + displayname(player));
+        player.infected = false;
+        player.turnsinfected = 0;
+        deaths.push(displayname(player));
+    }
+
+    // sets infected to true if not immune
+    // requires: player is valid
+    function infect(player) {
+        if (!player.immune) player.infected = true;
+    }
+
+    // sets infected to false and immune to true if player is not a covidiot
+    // requires: player is valid
+    function heal(player) {
+        if (player.infected && player.role !== "covidiot") {
+            player.immune = true;
+            player.infected = false;
+            player.turnsinfected = 0;
+        }
+    }
+
+    // iterates through playerlist. If a player is the given role and is not roleblocked, it applies the roles actions to everyone in their target list
+    function covidiot() {
+        for (var i = 0; i < playerlist.length; i++) {
+            var player = playerlist[i];
+            if (player !== false && player.role === "covidiot") {
+                if (!player.roleblocked) {
+                    for (var j = 0; j < player.targetlist.length; j++) {
+                        //console.log("covidiot function " + i);
+                        var target = playerlist[player.targetlist[j]];
+                        if (target.role == "paranoid") {
+                            target.targetlist.push(i);
+                        } else infect(target);
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    function telemarketer() {
+        for (var i = 0; i < playerlist.length; i++) {
+            if (playerlist[i] !== false && playerlist[i].role === "telemarketer") {
+                var player = playerlist[i];
+                for (var j = 0; j < player.targetlist.length; j++) {
+                    var target = playerlist[player.targetlist[j]];
+                    target.roleblocked = true;
+                    if (player.infected) infect(target);
+                    else if (target.infected) infect(player);
+                }
+            }
+        }
+        return false;
+    }
+    function doctor() {
+        for (var i = 0; i < playerlist.length; i++) {
+            var player = playerlist[i];
+            if (player !== false && player.role === "doctor") {
+                if (!player.roleblocked) {
+                    for (var j = 0; j < player.targetlist.length; j++) {
+                        var target = playerlist[player.targetlist[j]];
+                        if (target.role == "paranoid") {
+                            target.targetlist.push(i);
+                        } else {
+                            heal(target);
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+    function tester() {
+        for (var i = 0; i < playerlist.length; i++) {
+            if (playerlist[i] !== false && playerlist[i].role === "tester") {
+                var player = playerlist[i];
+                if (!player.roleblocked) {
+                    for (var j = 0; j < player.targetlist.length; j++) {
+                        var target = playerlist[player.targetlist[j]];
+                        if (target.role == "paranoid") {
+                            target.targetlist.push(i);
+                        } else {
+                            if (player.infected) infect(target);
+                            else if (target.infected) {
+                                infect(player);
+                                investresults.push(new Result(displayname(player), target.name + " is infected."));
+                            } else if (target.immune) {
+                                investresults.push(new Result(displayname(player), target.name + " is immune"));
+                            } else investresults.push(new Result(displayname(player), target.name + " is not infected"));
+                        }
+                    }
+                } else player.name = investresults.push(new Result(displayname(player), "You were roleblocked!"));
+            }
+        }
+        return false;
+    }
+    function detective() {
+        for (var i = 0; i < playerlist.length; i++) {
+            if (playerlist[i] !== false && playerlist[i].role === "detective") {
+                var player = playerlist[i];
+                if (!player.roleblocked) {
+                    for (var j = 0; j < player.targetlist.length; j++) {
+                        var target = playerlist[player.targetlist[j]];
+                        if (target.role == "paranoid") {
+                            target.targetlist.push(i);
+                        } else {
+                            if (player.infected) infect(target);
+                            else if (target.infected) infect(player);
+                            investresults.push(new Result(displayname(player), target.name + " is a " + target.role));
+                        }
+                    }
+                } else player.name = investresults.push(new Result(displayname(player), "You were roleblocked!"));
+            }
+        }
+        return false;
+    }
+    function paranoid() {
+        for (var i = 0; i < playerlist.length; i++) {
+            if (playerlist[i] !== false && playerlist[i].role === "paranoid") {
+                var player = playerlist[i];
+                if (!player.roleblocked) {
+                    for (var j = 0; j < player.targetlist.length; j++) {
+                        if (cycle > GRACE_PERIOD) kill(playerlist[player.targetlist[j]]);
+                    }
+                }
+            }
+        }
+    }
+    function newscaster() {
+        for (var i = 0; i < playerlist.length; i++) {
+            if (playerlist[i] !== false && playerlist[i].role === "newscaster") {
+                var newscaster = playerlist[i];
+                if (!newscaster.roleblocked) {
+                    for (var j = 0; j + 1 < newscaster.targetlist.length; j++) {
+                        var controlled = playerlist[newscaster.targetlist[j]];
+                        if (controlled.role == "paranoid") {
+                            controlled.targetlist.push(i);
+                        } else {
+                            var newtarget = playerlist[newscaster.targetlist[j+1]];
+                            controlled.targetlist = [newtarget];
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // updates the player data in the data table. Sets day and night headings to have the proper cycle numbers
+    function updateplayerdata() {
+        var rows = document.getElementById("datatable").rows;
+        //console.log(table.length);
+        //console.log(playerlist.length);
+        for (var i = 1; i < rows.length; i++) {
+            var cells = rows[i].cells;
+            //console.log(cells.length);
+            var currplayer = playerlist[i - 1];
+            //console.log(currplayer.id);
+            if (currplayer !== false) {
+                cells[1].innerHTML = currplayer.name;
+                cells[2].innerHTML = currplayer.role;
+                cells[3].innerHTML = currplayer.dead;
+                cells[4].innerHTML = currplayer.turnsinfected;
+                cells[5].innerHTML = currplayer.immune;
+                cells[6].innerHTML = currplayer.quarantine;
+            } else rows[i].style.display = "none";
+        }
+        document.getElementById("dayheading").innerHTML = "Day " + cycle;
+        document.getElementById("nightheading").innerHTML = "Night " + cycle;
+        return false;
+    }
+    
+    // if a player is quarantined, they are unquarantined. If they are not quarantined, they are put into quarantine. Changes button content accordingly. Calls updateplayerdata()
+    function quarantine(p) {
+        var player = playerlist[p - 1];
+        var button = document.getElementById("quarantine" + p);
+        if (player.quarantine) {
+            player.quarantine = false;
+            button.innerHTML = "Quarantine"
+        } else {
+            player.quarantine = true;
+            button.innerHTML = "Unquarantine"
+        }
+        //console.log(displayname(player) + " quarantined: " + player.quarantine);
+        updateplayerdata();
+        return false;
+    }
+
+    // randomly shuffles the given array
+    function shuffle(array) {
+        for (var i = array.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1)); // random index from 0 to i
+
+            // swap elements array[i] and array[j]
+            var t = array[i];
+            array[i] = array[j];
+            array[j] = t;
+        }
+    }
+
+    // iterates through playerlist to find a player with the given name. Returns the players index, or false if no such player exists
+    function searchname(string) {
+        for (var i = 0; i < playernames.length; i++) {
+            if (playernames[i] === string) return i;
+        }
+        return false;
+    }
+
+    // checks for the validity of self-targeting
+    function validtarget(player, target) {
+        if (player.id !== target.id) return true;
+        if (player.role == "covidiot") return false;
+        if (player.role == "detective") return false;
+        if (player.role == "telemarketer") return false;
+        return true;
+    }
+
+    // shifts from summary screen to main daytime screen
+    function cont() {
+        document.getElementById("summary").style.display = "none";
+        document.getElementById("quarantineinfo").style.display = "";
+        return false;
+    }
+
+    // hides and shows necessary elements, including player target input boxes
+    function endday() {
+        document.getElementById("quarantineinfo").style.display = "none";
+        document.getElementById("day").style.display = "none";
+        document.getElementById("night").style.display = "";
+        var targetdata = document.getElementById("targetinput").getElementsByTagName("div");
+        for (var i = 0; i < targetdata.length; i++) {
+            if (playerlist[i] === false || playerlist[i].dead || playerlist[i].quarantine || playerlist[i].role == "paranoid" || playerlist[i].role == "judge") targetdata[i].style.display = "none";
+            else targetdata[i].style.display = "";
+        }
+        return false;
+    }
+
+    // reads in and validates target input. Calls the role functions. Kills players as necessary. Prints death and result info accordingly. Calls updateplayerdata(). Sets visiblity of quarantine buttons.
+    function endnight() {
+        //console.log("i am here");
+        var divs = document.getElementById("targetinput").getElementsByTagName("div");
+        for (var i = 1; i <= playerlist.length; i++) {
+            var player = playerlist[i - 1];
+            if (player !== false) {
+                
+                var curr = document.getElementById("target" + i);
+                player.targetlist = [];
+                var targets = curr.value.split(" ");
+                for (var j = 0; j < targets.length; j++) {
+                    if (!Number.isInteger(Number(targets[j]))) {
+                        var searchresult = searchname(targets[j]);
+                        console.log("not a number");
+                        if (searchresult !== false) {
+                            if (validtarget(player, playerlist[searchresult])) player.targetlist.push(searchresult);
+                        } else {
+                            alert("Player " + i + " has an invalid target name!");
+                            return false;
+                        }
+                    } else if (curr.value == "") {
+                    } else {
+                        //console.log("number")
+                        if (playerlist[targets[j] - 1] !== false) {
+                            if (validtarget(player, playerlist[targets[j] - 1])) player.targetlist.push(targets[j] - 1);
+                            else {
+                                alert("Player " + i + " cannot target themselves!");
+                                return false;
+                            }
+                        } else {
+                            alert("Player " + i + " has an invalid target number!");
+                            return false;
+                        }
+                    }
+                }
+                curr.value = "";
+                //console.log(displayname(player) + "target number: " + player.targetlist.length);
+            }
+        }
+
+        newscaster();
+        telemarketer();
+        covidiot();
+        detective();
+        tester();
+        doctor();
+        paranoid();
+        
+        for (var i = 0; i < playerlist.length; i++) {
+            if (playerlist[i] !== false && playerlist[i].turnsinfected === TURNS_INFECTED
+                && playerlist[i].role != "covidiot" && GRACE_PERIOD < cycle) {
+                kill(playerlist[i]);
+                //deaths.push(displayname(playerlist[i]));
+            }
+            else if (playerlist[i] !== false && playerlist[i].infected) playerlist[i].turnsinfected++;
+        }
+        cycle++;
+        
+        deathlist = document.getElementById("deaths");
+        deathlist.innerHTML = "";
+        for (var i = 0; i < deaths.length; i++) {
+            var li = document.createElement("LI");
+            li.innerHTML = deaths[i];
+            
+            deathlist.appendChild(li);
+        }
+        if (deaths.length == 0) {
+            var li = document.createElement("LI");
+            li.innerHTML = "None";
+            
+            deathlist.appendChild(li);
+        }
+        
+        resulttable = document.getElementById("results");
+        resulttable.innerHTML = "<tr><th>Recipient</th><th>Message</th></tr>";
+        for (var i = 0; i < investresults.length; i++) {
+            var row = document.createElement("TR");
+            
+            var rec = document.createElement("TD");
+            rec.innerHTML = investresults[i].investigator;
+            row.appendChild(rec);
+            
+            var msg = document.createElement("TD");
+            msg.innerHTML = investresults[i].message;
+            row.appendChild(msg);
+            
+            resulttable.appendChild(row);
+        }
+        if (investresults.length == 0) {
+            var row = document.createElement("TR");
+            
+            var rec = document.createElement("TD");
+            rec.innerHTML = "None";
+            row.appendChild(rec);
+            
+            resulttable.appendChild(row);
+        }
+        investresults = [];
+        deaths = [];
+        
+        updateplayerdata();
+        
+        for (var i = 0; i < playerlist.length; i++) {
+            if (playerlist[i] === false || playerlist[i].dead) {
+                document.getElementById("quarantinediv" + (i+1)).style.display = "none";
+            }
+        }
+        
+        document.getElementById("night").style.display = "none";
+        document.getElementById("day").style.display = "";
+        document.getElementById("summary").style.display = "";
+        return false;
+    }
+
+    function playersetup() {
+        var playerinput = document.getElementById("playerinfo").getElementsByTagName("input");
+        console.log(playerinput.length);
+        for (var i = 0; i < playerinput.length - 1; i++) {
+            if (playerinput[i].type == "text") {
+                playernames.push(playerinput[i].value);
+                if (playerinput[i].value != "") playernum++;
+            }
+        }
+        //console.log(playernum);
+        if (playernum < 3) {
+            alert("A minimum of three players are required!");
+            return false;
+        }
+        document.getElementById("playerinfo").style.display = "none";
+        document.getElementById("roleselection").style.display = "";
+        return false;
+    }
+
+    function rolesetup() {
+        var roleinput = document.getElementById("roleselection").elements;
+        var rolenum = 0;
+        for (var i = 0; i < roleinput.length; i++) {
+            if (roleinput[i].type === "number") {
+                for (var j = 0; j < roleinput[i].value; j++) {
+                    rolelist.push(roleinput[i].name);
+                    rolenum++;
+                }
+            }
+        }
+        if (rolenum > playernum) {
+            alert("Too many roles!");
+            rolelist = []
+            return false;
+        } else if (rolenum < playernum) {
+            alert("Not enough roles!");
+            rolelist = [];
+            return false;
+        }
+
+        shuffle(rolelist);
+        var roleindex = 0;
+        for (var i = 0; i < 9; i++) {
+            if (playernames[i] !== "") {
+                playerlist.push(new Player(i + 1, playernames[i], rolelist[roleindex]));
+                roleindex++;
+            } else {
+                playerlist.push(false);
+                //console.log("i am here");
+            }
+        }
+
+        document.getElementById("roleselection").style.display = "none";
+        document.getElementById("data").style.display = "";
+        updateplayerdata();
+        endday();
+        return false;
+    }
+
+</script>
