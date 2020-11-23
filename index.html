@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <h1>Welcome to Covidiots! v1.0</h1>
+    <h1>Welcome to Covidiots! v1.1</h1>
     <div class="grid">
         <div id="terminal">
             <form id="playerinfo" onsubmit="return playersetup()">
@@ -41,6 +41,9 @@
                 <br>
                 <label for="p9">Player 9:</label>
                 <input type="text" name="p9" id="p9">
+                <br>
+                <input type="checkbox" name="debugactivation" id="debugactivation">
+                <label for="debugactivation">Include debug screen</label>
                 <br>
                 <input type="submit" name="SUBMIT">
             </form>
@@ -86,53 +89,81 @@
                     </table>
                     <button onclick="return cont()">Continue</button>
                 </div>
-                <div id="quarantineinfo" style="display:none">
-                     <div id="quarantinediv1">
-                        <label for="quarantine1">Player 1</label>
-                        <button id="quarantine1" onclick="return quarantine(1)">Quarantine</button>
-                        <br>
+                <div id="deliberationscreen" style="display:none">
+                    <div id="quarantineinfo">
+                         <div id="quarantinediv1">
+                            <label for="quarantine1">Player 1</label>
+                            <button id="quarantine1" onclick="return quarantine(1)">Quarantine</button>
+                            <br>
+                        </div>
+                        <div id="quarantinediv2">
+                            <label for="quarantine2">Player 2</label>
+                            <button id="quarantine2" onclick="return quarantine(2)">Quarantine</button>
+                            <br>
+                        </div>
+                        <div id="quarantinediv3">
+                            <label for="quarantine3">Player 3</label>
+                            <button id="quarantine3" onclick="return quarantine(3)">Quarantine</button>
+                            <br>
+                        </div>
+                        <div id="quarantinediv4">
+                            <label for="quarantine4">Player 4</label>
+                            <button id="quarantine4" onclick="return quarantine(4)">Quarantine</button>
+                            <br>
+                        </div>
+                        <div id="quarantinediv5">
+                            <label for="quarantine5">Player 5</label>
+                            <button id="quarantine5" onclick="return quarantine(5)">Quarantine</button>
+                            <br>
+                        </div>
+                        <div id="quarantinediv6">
+                            <label for="quarantine6">Player 6</label>
+                            <button id="quarantine6" onclick="return quarantine(6)">Quarantine</button>
+                            <br>
+                        </div>
+                        <div id="quarantinediv7">
+                            <label for="quarantine7">Player 7</label>
+                            <button id="quarantine7" onclick="return quarantine(7)">Quarantine</button>
+                            <br>
+                        </div>
+                        <div id="quarantinediv8">
+                            <label for="quarantine8">Player 8</label>
+                            <button id="quarantine8" onclick="return quarantine(8)">Quarantine</button>
+                            <br>
+                        </div>
+                        <div id="quarantinediv9">
+                            <label for="quarantine9">Player 9</label>
+                            <button id="quarantine9" onclick="return quarantine(9)">Quarantine</button>
+                            <br>
+                        </div>
+                        <button onclick="return endday()">End day</button>
                     </div>
-                    <div id="quarantinediv2">
-                        <label for="quarantine2">Player 2</label>
-                        <button id="quarantine2" onclick="return quarantine(2)">Quarantine</button>
-                        <br>
+                    <div id="debug" style="display:none">
+                        <h3>Debug</h3>
+                        <p id="cmdreturn">Enter 'help' for a list of commands.</p>
+                        <form onsubmit="return debugcmd()">
+                            <input type="text" id="cmdinput" name="cmdinput">
+                            <input type="submit" name="Enter">
+                        </form>
+                        <div id="commandlist" style="display:none">
+                            <h4>List of Commands:</h4>
+                            <ul>
+                                <li>changename [player] [newname]</li>
+                                <li>changerole [player] [newrole]</li>
+                                <li>kill [player]</li>
+                                <li>revive [player]</li>
+                                <li>infect [player]</li>
+                                <li>heal [player]</li>
+                                <li>makeimmune [player]</li>
+                                <li>makenotimmune [player]</li>
+                                <li>quarantine [player]</li>
+                                <li>unquarantine [player]</li>
+                                <li>addplayer [name] [role]</li>
+                                <li>removeplayer [player]</li>
+                                <li>help</li>
+                            </ul>
+                        </div>
                     </div>
-                    <div id="quarantinediv3">
-                        <label for="quarantine3">Player 3</label>
-                        <button id="quarantine3" onclick="return quarantine(3)">Quarantine</button>
-                        <br>
-                    </div>
-                    <div id="quarantinediv4">
-                        <label for="quarantine4">Player 4</label>
-                        <button id="quarantine4" onclick="return quarantine(4)">Quarantine</button>
-                        <br>
-                    </div>
-                    <div id="quarantinediv5">
-                        <label for="quarantine5">Player 5</label>
-                        <button id="quarantine5" onclick="return quarantine(5)">Quarantine</button>
-                        <br>
-                    </div>
-                    <div id="quarantinediv6">
-                        <label for="quarantine6">Player 6</label>
-                        <button id="quarantine6" onclick="return quarantine(6)">Quarantine</button>
-                        <br>
-                    </div>
-                    <div id="quarantinediv7">
-                        <label for="quarantine7">Player 7</label>
-                        <button id="quarantine7" onclick="return quarantine(7)">Quarantine</button>
-                        <br>
-                    </div>
-                    <div id="quarantinediv8">
-                        <label for="quarantine8">Player 8</label>
-                        <button id="quarantine8" onclick="return quarantine(8)">Quarantine</button>
-                        <br>
-                    </div>
-                    <div id="quarantinediv9">
-                        <label for="quarantine9">Player 9</label>
-                        <button id="quarantine9" onclick="return quarantine(9)">Quarantine</button>
-                        <br>
-                    </div>
-                    <button onclick="return endday()">End day</button>
                 </div>
             </div>
             <div id="night" style="display:none">
@@ -282,9 +313,26 @@
                 </tr>
             </table>
         </div>
-        <div id="debug" style="display:none">
-            <h3>Debug</h3>
-            
+        <div id="versionhistory">
+            <h3>Version History</h3>
+            <button onclick="return changelog()" id="togglechangelog">Show</button>
+            <div id="changelog" style="display:none">
+                <p>1.0</p>
+                <ul>
+                    <li>Basic functionality</li>
+                </ul>
+                
+                <p>1.0.1</p>
+                <ul>
+                    <li>Bug fixes (using player names as targets, cycle number)</li>
+                </ul>
+                
+                <p>1.1</p>
+                <ul>
+                    <li>Added debug screen</li>
+                    <li>Added version history screen</li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>
@@ -554,13 +602,13 @@
     // shifts from summary screen to main daytime screen
     function cont() {
         document.getElementById("summary").style.display = "none";
-        document.getElementById("quarantineinfo").style.display = "";
+        document.getElementById("deliberationscreen").style.display = "";
         return false;
     }
 
     // hides and shows necessary elements, including player target input boxes
     function endday() {
-        document.getElementById("quarantineinfo").style.display = "none";
+        document.getElementById("deliberationscreen").style.display = "none";
         document.getElementById("day").style.display = "none";
         document.getElementById("night").style.display = "";
         var targetdata = document.getElementById("targetinput").getElementsByTagName("div");
@@ -585,7 +633,7 @@
                 for (var j = 0; j < targets.length; j++) {
                     if (!Number.isInteger(Number(targets[j]))) {
                         var searchresult = searchname(targets[j]);
-                        console.log("not a number");
+                        //console.log("not a number");
                         if (searchresult !== false) {
                             if (validtarget(player, playerlist[searchresult])) player.targetlist.push(searchresult);
                         } else {
@@ -695,6 +743,7 @@
                 if (playerinput[i].value != "") playernum++;
             }
         }
+        if (document.getElementById("debugactivation").checked) document.getElementById("debug").style.display = "";
         //console.log(playernum);
         if (playernum < 3) {
             alert("A minimum of three players are required!");
@@ -742,6 +791,392 @@
         document.getElementById("data").style.display = "";
         updateplayerdata();
         endday();
+        return false;
+    }
+    
+    function debugcmd() {
+        var input = document.getElementById("cmdinput");
+        var returnbox = document.getElementById("cmdreturn");
+        if (input.value == "") {
+            returnbox.innerHTML = "Nothing entered!";
+        } else {
+            var arglist = input.value.split(" ");
+            var arglistlen = arglist.length;
+            var first = arglist[0];
+            if (first == "changename") {
+                if (arglistlen == 3) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    var newname = arglist[2];
+                    if (!playernames.includes(newname)) {
+                        player.name = newname;
+                        returnbox.innerHTML = "Success!";
+                        input.value = "";
+                        updateplayerdata();
+                        return false;
+                    } else {
+                        returnbox.innerHTML = "This name is already in use!";
+                        return false;
+                    }
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'changename [player] [newname]'";
+                    return false;
+                }
+            }
+            else if (first == "changerole") {
+                if (arglistlen == 3) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    var role = arglist[2];
+                    if (role == "covidiot" || role == "doctor" || role == "tester" || role == "detective" || role == "telemarketer" || role == "judge" || role == "paranoid" || role == "newscaster") {
+                        player.role = role;
+                        returnbox.innerHTML = "Success!";
+                        input.value = "";
+                        updateplayerdata();
+                        return false;
+                    } else {
+                        returnbox.innerHTML = "Invalid role";
+                        return false;
+                    }
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'changerole [player] [newrole]'";
+                    return false;
+                }
+            }
+            else if (first == "kill") {
+                if (arglistlen == 2) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    kill(player);
+                    returnbox.innerHTML = "Success!";
+                        input.value = "";
+                        updateplayerdata();
+                        return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'kill [player]'";
+                    return false;
+                }
+            }
+            else if (first == "revive") {
+                if (arglistlen == 2) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    player.dead = false;
+                    returnbox.innerHTML = "Success!";
+                        input.value = "";
+                        updateplayerdata();
+                        return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'revive [player]'";
+                    return false;
+                }
+            }
+            else if (first == "infect") {
+                if (arglistlen == 2) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    infect(player);
+                    returnbox.innerHTML = "Success!";
+                    input.value = "";
+                    updateplayerdata();
+                    return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'infect [player]'";
+                    return false;
+                }
+            }
+            else if (first == "heal") {
+                if (arglistlen == 2) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    heal(player);
+                    player.immune = false;
+                    returnbox.innerHTML = "Success!";
+                    input.value = "";
+                    updateplayerdata();
+                    return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'heal [player]'";
+                    return false;
+                }
+            }
+            else if (first == "makeimmune") {
+                if (arglistlen == 2) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    player.immune = true;
+                    player.infected = false;
+                    player.turnsinfected = 0;
+                    returnbox.innerHTML = "Success!";
+                    input.value = "";
+                    updateplayerdata();
+                    return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'makeimmune [player]'";
+                    return false;
+                }
+            }
+            else if (first == "makenotimmune") {
+                if (arglistlen == 2) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    player.immune = false;
+                    returnbox.innerHTML = "Success!";
+                    input.value = "";
+                    updateplayerdata();
+                    return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'makenotimmune [player]'";
+                    return false;
+                }
+            }
+            else if (first == "quarantine") {
+                if (arglistlen == 2) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    player.quarantine = true;
+                    returnbox.innerHTML = "Success!";
+                    input.value = "";
+                    updateplayerdata();
+                    return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'quarantine [player]'";
+                    return false;
+                }
+            }
+            else if (first == "unquarantine") {
+                if (arglistlen == 2) {
+                    var player;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) player = playerlist[searchresult];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = playerlist[arglist[1]];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    player.quarantine = false;
+                    returnbox.innerHTML = "Success!";
+                    input.value = "";
+                    updateplayerdata();
+                    return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'unquarantine [player]'";
+                    return false;
+                }
+            }
+            else if (first == "addplayer") {
+                if (arglistlen == 3) {
+                    var newname = arglist[1];
+                    var role = arglist[2];
+                    if (playernames.includes(newname)) {
+                        returnbox.innerHTML = "This name is already in use!";
+                        return false;
+                    }
+                    if (role == "covidiot" || role == "doctor" || role == "tester" || role == "detective" || role == "telemarketer" || role == "judge" || role == "paranoid" || role == "newscaster") {
+                        for (var i = 0; i < playerlist.length; i++) {
+                            if (playerlist[i] === false) {
+                                playerlist[i] = new Player(i+1, newname, role);
+                                returnbox.innerHTML = displayname(playerlist[i]) + " created!";
+                                input.value = "";
+                                updateplayerdata();
+                                return false;
+                            }
+                        }
+                        returnbox.innerHTML = "You already have the maximum number of players";
+                        return false;
+                    } else {
+                        returnbox.innerHTML = "Invalid role";
+                        return false;
+                    }
+                } else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'addplayer [name] [role]'";
+                    return false;
+                }
+            }
+            else if (first == "removeplayer") {
+                if (arglistlen == 2) {
+                    var playerindex;
+                    if (!Number.isInteger(Number(arglist[1]))) {
+                        var searchresult = searchname(arglist[1]);
+                        if (searchresult !== false) playerindex = searchresult;
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    } else {
+                        if (playerlist[arglist[1]] !== false) player = arglist[1];
+                        else {
+                            returnbox.innerHTML = "Invalid player";
+                            return false;
+                        }
+                    }
+                    playerlist[playerindex] = false;
+                    returnbox.innerHTML = "Success!";
+                    input.value = "";
+                    updateplayerdata();
+                    return false;
+                }
+                else {
+                    returnbox.innerHTML = "Invalid number of arguments. Proper usage is 'quarantine [player]'";
+                    return false;
+                }
+            }
+            else if (first == "help") {
+                var cmdlist = document.getElementById("commandlist");
+                if (cmdlist.style.display == "") cmdlist.style.display = "none";
+                else if (cmdlist.style.display == "none") cmdlist.style.display = "";
+                input.value = "";
+                return false;
+            }
+            else returnbox.innerHTML = "Invalid command";
+        }
+        return false;
+    }
+    
+    function changelog() {
+        var changelog = document.getElementById("changelog");
+        var button = document.getElementById("togglechangelog");
+        if (changelog.style.display == "") {
+            changelog.style.display = "none";
+            button.innerHTML = "Show";
+        } else if (changelog.style.display == "none") {
+            changelog.style.display = "";
+            button.innerHTML = "Hide";
+        }
         return false;
     }
 
