@@ -13,7 +13,6 @@
     <div class="grid">
         <div id="terminal">
             <form id="playerinfo" onsubmit="return playersetup()">
-                <p>Welcome to Covidiots!</p>
                 <p>Please enter the names of the players.</p>
                 <label for="p1">Player 1:</label>
                 <input type="text" name="p1" id="p1">
@@ -41,9 +40,6 @@
                 <br>
                 <label for="p9">Player 9:</label>
                 <input type="text" name="p9" id="p9">
-                <br>
-                <input type="checkbox" name="debugactivation" id="debugactivation">
-                <label for="debugactivation">Include debug screen</label>
                 <br>
                 <input type="submit" name="SUBMIT">
             </form>
@@ -219,6 +215,20 @@
                 </form>
             </div>
         </div>
+        <div id="customizations">
+            <h3>Game customizations</h3>
+            <form>
+                <label for="turnsinfected">Turns infected before death</label>
+                <input type="number" min=0 name="turnsinfected" id="turnsinfected" value="1">
+                <br>
+                <label for="graceperiod">Grace period</label>
+                <input type="number" min=0 name="graceperiod" id="graceperiod" value="1">
+                <br>
+                <input type="checkbox" name="debugactivation" id="debugactivation">
+                <label for="debugactivation">Include debug screen</label>
+                <br>
+            </form>
+        </div>
         <div id="data" style="display:none">
             <table id="datatable">
                 <tr id="headings">
@@ -313,6 +323,7 @@
                 </tr>
             </table>
         </div>
+        <div id="rules"></div>
         <div id="versionhistory">
             <h3>Version History</h3>
             <button onclick="return changelog()" id="togglechangelog">Show</button>
@@ -744,6 +755,9 @@
             }
         }
         if (document.getElementById("debugactivation").checked) document.getElementById("debug").style.display = "";
+        TURNS_INFECTED = Number(document.getElementById("turnsinfected").value);
+        GRACE_PERIOD = Number(document.getElementById("graceperiod").value);
+        document.getElementById("customizations").style.display = "none";
         //console.log(playernum);
         if (playernum < 3) {
             alert("A minimum of three players are required!");
