@@ -1,0 +1,102 @@
+* {
+    margin: 0;
+    padding: 0;
+    font: 18px Roboto;
+}
+
+body {
+    width: 60%;
+    margin: auto;
+    margin-top: 55px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+}
+
+h1 {
+    font: 30px 'Roboto Slab', sans-serif;
+    font-weight: 700;
+    margin-bottom: 30px;
+    color: #00164C;
+}
+
+h2 {
+    font: 24px 'Roboto Slab', serif;
+    font-weight: 500;
+    color: #00164C;
+    margin-bottom: 15px;
+}
+
+h3 {
+    font: 20px 'Roboto Slab', sans-serif;
+    font-weight: 500;
+    margin-bottom: 10px;
+    color: #00164C;
+}
+ 
+p {
+    margin-bottom: 10px;
+}
+
+input {
+    margin-bottom: 5px;
+}
+
+.centeredbutton {
+    width: 100px;
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+}
+
+[type=number] {
+    width:30px;
+}
+
+form {
+    width:auto;
+    display:inline-block;
+    
+}
+
+table {
+    border: 2px solid lightgrey;
+    border-collapse: collapse;
+}
+
+th {
+    padding: 5px;
+    border: 2px solid lightgrey;
+}
+
+td {
+    padding: 5px;
+    border: 2px solid lightgrey;
+    text-align: center;
+}
+
+ul {
+    margin-bottom: 20px;
+    padding-left: 30px;
+}
+#summary {
+    width:auto;
+    display:inline-block;
+}
+#quarantineinfo {
+    width:40%;
+    margin-bottom: 40px;
+}
+#quarantineinfo button {
+    margin-bottom: 5px;
+}
+#commandlist {
+    color: darkslategray;
+}
+
+.extras h3 {
+    display: inline-block;
+    margin-right: 20px;
+}

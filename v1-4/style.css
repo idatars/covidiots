@@ -5,11 +5,10 @@
 }
 
 :root {
-    --covidiot-red: #a62639;
-    --town-green: #4d908e;
-    --chaotic-purple: #C06E52;
-;
-    --neutral-grey: #564256;
+    --covidiot-red: #A60016;
+    --town-green: #3E9C00;
+    --chaotic-purple: #541FAB;
+    --neutral-grey: dimgrey;
 }
 
 body {

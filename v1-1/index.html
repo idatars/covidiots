@@ -8,17 +8,13 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<style>
-   @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&family=Roboto:wght@400;700&display=swap');
-</style>    
-    
 <body>
-    <h1 style="text-align:left">The Host</h1>
-    <h2 id="time" style="display:0"></h2>
+    <h1>Welcome to Covidiots! v1.1</h1>
     <div class="grid">
         <div id="terminal">
             <form id="playerinfo" onsubmit="return playersetup()">
-                <p><em>Please enter the names of the players.</em></p>
+                <p>Welcome to Covidiots!</p>
+                <p>Please enter the names of the players.</p>
                 <label for="p1">Player 1:</label>
                 <input type="text" name="p1" id="p1">
                 <br>
@@ -46,7 +42,10 @@
                 <label for="p9">Player 9:</label>
                 <input type="text" name="p9" id="p9">
                 <br>
-                <input type="submit" name="SUBMIT" class="centeredbutton">
+                <input type="checkbox" name="debugactivation" id="debugactivation">
+                <label for="debugactivation">Include debug screen</label>
+                <br>
+                <input type="submit" name="SUBMIT">
             </form>
             <form id="roleselection" style="display:none" onsubmit="return rolesetup()">
                 <input type="number" name="covidiot" id="covidiot" min="1" max="playernum()" value="1">
@@ -73,9 +72,10 @@
                 <input type="number" name="paranoid" id="paranoid" min="0" value="0">
                 <label for="paranoid">Paranoid</label>
                 <br>
-                <input type="submit" name="SUBMIT" class="centeredbutton">
+                <input type="submit" name="SUBMIT">
             </form>
             <div id="day" style="display:none">
+                <h2 id="dayheading">Day X</h2>
                 <div id="summary" style="display:none">
                     <h3>Deaths to report:</h3>
                     <ul id="deaths">
@@ -87,7 +87,7 @@
                             <th>Message</th>
                         </tr>
                     </table>
-                    <button onclick="return cont()" id="continue" class="centeredbutton">Continue</button>
+                    <button onclick="return cont()">Continue</button>
                 </div>
                 <div id="deliberationscreen" style="display:none">
                     <div id="quarantineinfo">
@@ -136,14 +136,14 @@
                             <button id="quarantine9" onclick="return quarantine(9)">Quarantine</button>
                             <br>
                         </div>
-                        <button onclick="return endday()" id="endday" class="centeredbutton">End day</button>
+                        <button onclick="return endday()">End day</button>
                     </div>
                     <div id="debug" style="display:none">
                         <h3>Debug</h3>
                         <p id="cmdreturn">Enter 'help' for a list of commands.</p>
                         <form onsubmit="return debugcmd()">
                             <input type="text" id="cmdinput" name="cmdinput">
-                            <input type="submit" name="Enter" value="Enter" class="extras">
+                            <input type="submit" name="Enter">
                         </form>
                         <div id="commandlist" style="display:none">
                             <h4>List of Commands:</h4>
@@ -167,6 +167,7 @@
                 </div>
             </div>
             <div id="night" style="display:none">
+                <h2 id="nightheading">Night X</h2>
                 <p>Enter the players targets...</p>
                 <form id="targetinput" onsubmit="return endnight()">
                     <div>
@@ -214,29 +215,15 @@
                         <input type="text" name="target9" id="target9">
                         <br>
                     </div>
-                    <input type="submit" name="SUBMIT" class="centeredbutton">
+                    <input type="submit" name="SUBMIT">
                 </form>
             </div>
-        </div>
-        <div id="customizations">
-            <h3>Game Customizations</h3>
-            <form>
-                <label for="turnsinfected">Turns infected before death</label>
-                <input type="number" min=0 name="turnsinfected" id="turnsinfected" value="1">
-                <br>
-                <label for="graceperiod">Grace period</label>
-                <input type="number" min=0 name="graceperiod" id="graceperiod" value="1">
-                <br>
-                <input type="checkbox" name="debugactivation" id="debugactivation">
-                <label for="debugactivation">Include debug screen</label>
-                <br>
-            </form>
         </div>
         <div id="data" style="display:none">
             <table id="datatable">
                 <tr id="headings">
                     <th></th>
-                    <th>Name</th>
+                    <th></th>
                     <th>Role</th>
                     <th>Dead</th>
                     <th>Turns Infected</th>
@@ -326,11 +313,11 @@
                 </tr>
             </table>
         </div>
-        <div id="versionhistory" class="extras" style="grid-column:2;">
+        <div id="versionhistory">
             <h3>Version History</h3>
             <button onclick="return changelog()" id="togglechangelog">Show</button>
             <div id="changelog" style="display:none">
-                <a href="v1-0/index.html"><p>1.0</p></a>
+                <p>1.0</p>
                 <ul>
                     <li>Basic functionality</li>
                 </ul>
@@ -340,35 +327,14 @@
                     <li>Bug fixes (using player names as targets, cycle number)</li>
                 </ul>
                 
-                <a href="v1-1/index.html"><p>1.1</p></a>
+                <p>1.1</p>
                 <ul>
                     <li>Added debug screen</li>
                     <li>Added version history screen</li>
                 </ul>
-                <a href="v1-2/index.html"><p>1.2</p></a>
-                <ul>
-                    <li>Added customizable game rules</li>
-                </ul>
-                <a href="v1-3/index.html"><p>1.3</p></a>
-                <ul>
-                    <li>Added basic CSS layout</li>
-                </ul>
-                <a href="v1-4/index.html"><p>1.4</p></a>
-                <ul>
-                    <li>Role cards!</li>
-                    <li>Basic navigation</li>
-                </ul>
-                <a href="v1-5/index.html"><p>1.5</p></a>
-                <ul>
-                    <li>Updated colors</li>
-                    <li>Added 'back' buttons</li>
-                    <li>Older versions are now accessible</li>
-                </ul>
             </div>
         </div>
-        
     </div>
-    <input type="button" onclick="location.href='index.html'" value="◄ Back to Role Selection" class="footer">
 </body>
 
 </html>
@@ -583,7 +549,8 @@
                 cells[6].innerHTML = currplayer.quarantine;
             } else rows[i].style.display = "none";
         }
-        
+        document.getElementById("dayheading").innerHTML = "Day " + cycle;
+        document.getElementById("nightheading").innerHTML = "Night " + cycle;
         return false;
     }
     
@@ -641,7 +608,7 @@
 
     // hides and shows necessary elements, including player target input boxes
     function endday() {
-       document.getElementById("time").innerHTML = "Night " + cycle; document.getElementById("deliberationscreen").style.display = "none";
+        document.getElementById("deliberationscreen").style.display = "none";
         document.getElementById("day").style.display = "none";
         document.getElementById("night").style.display = "";
         var targetdata = document.getElementById("targetinput").getElementsByTagName("div");
@@ -710,7 +677,6 @@
             else if (playerlist[i] !== false && playerlist[i].infected) playerlist[i].turnsinfected++;
         }
         cycle++;
-        document.getElementById("time").innerHTML = "Day " + cycle;
         
         deathlist = document.getElementById("deaths");
         deathlist.innerHTML = "";
@@ -749,10 +715,6 @@
             rec.innerHTML = "None";
             row.appendChild(rec);
             
-            var msg = document.createElement("TD");
-            msg.innerHTML = '-';
-            row.appendChild(msg);
-            
             resulttable.appendChild(row);
         }
         investresults = [];
@@ -782,17 +744,11 @@
             }
         }
         if (document.getElementById("debugactivation").checked) document.getElementById("debug").style.display = "";
-        TURNS_INFECTED = Number(document.getElementById("turnsinfected").value);
-        GRACE_PERIOD = Number(document.getElementById("graceperiod").value);
-    
         //console.log(playernum);
         if (playernum < 3) {
             alert("A minimum of three players are required!");
             return false;
         }
-        
-        document.getElementById("customizations").style.display = "none";
-       document.getElementById("versionhistory").style.display = "none";
         document.getElementById("playerinfo").style.display = "none";
         document.getElementById("roleselection").style.display = "";
         return false;
@@ -833,9 +789,6 @@
 
         document.getElementById("roleselection").style.display = "none";
         document.getElementById("data").style.display = "";
-        
-        document.getElementById("time").style.display = "";
-        
         updateplayerdata();
         endday();
         return false;
